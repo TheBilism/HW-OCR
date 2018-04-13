@@ -1,0 +1,10 @@
+C:\Users\daku\source\repos\testocr\testocr\obj\Debug\testocr.Form1.resources
+C:\Users\daku\source\repos\testocr\testocr\obj\Debug\testocr.Properties.Resources.resources
+C:\Users\daku\source\repos\testocr\testocr\obj\Debug\testocr.csproj.GenerateResource.cache
+C:\Users\daku\source\repos\testocr\testocr\obj\Debug\testocr.csproj.CoreCompileInputs.cache
+C:\Users\daku\source\repos\testocr\testocr\bin\Debug\testocr.exe.config
+C:\Users\daku\source\repos\testocr\testocr\bin\Debug\testocr.exe
+C:\Users\daku\source\repos\testocr\testocr\bin\Debug\testocr.pdb
+C:\Users\daku\source\repos\testocr\testocr\obj\Debug\testocr.exe
+C:\Users\daku\source\repos\testocr\testocr\obj\Debug\testocr.pdb
+C:\Users\daku\source\repos\testocr\testocr\obj\Debug\testocr.csprojResolveAssemblyReference.cache

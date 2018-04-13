@@ -1,0 +1,91 @@
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Drawing.Drawing2D;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace testocr
+{
+    public partial class Form1 : Form
+    {
+        Bitmap DrawArea;
+        private Point p = Point.Empty;
+        private Point old = Point.Empty;
+        private Pen pioro;
+        private Graphics g;
+
+        private bool narysowano = false;
+        public Form1()
+        {
+            InitializeComponent();
+            DrawArea = new Bitmap(pictureBox1.Size.Width, pictureBox1.Size.Height);
+            pictureBox1.Image = DrawArea;
+            pioro = new Pen(Color.Black,10);
+            pioro.SetLineCap(System.Drawing.Drawing2D.LineCap.Round, System.Drawing.Drawing2D.LineCap.Round, System.Drawing.Drawing2D.DashCap.Round);
+
+            pictureBox1.BackColor = Color.White;
+            pictureBox2.BackColor = Color.White;
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            g = Graphics.FromImage(DrawArea);
+
+            Pen mypen = new Pen(Brushes.Black);
+            g.Clear(Color.White);
+
+            g.SmoothingMode = SmoothingMode.HighQuality;
+            g.Dispose();
+
+        }
+
+        private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
+        {
+            old = e.Location;
+        }
+
+        private void pictureBox1_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                g = Graphics.FromImage(DrawArea);
+                p = e.Location;
+                g.DrawLine(pioro, old, p);
+                old = e.Location;
+                
+                pictureBox1.Refresh();
+                if(!narysowano)
+                    narysowano = true;
+            }
+        }
+
+        private void pictureBox1_MouseUp(object sender, MouseEventArgs e)
+        {
+            pictureBox2.Image = pictureBox1.Image;
+            wykryj_linie();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            //DrawArea = new Bitmap(pictureBox1.Size.Width, pictureBox1.Size.Height);
+            if (narysowano)
+            {
+                g.Clear(Color.White);
+                pictureBox1.Image = DrawArea;
+                pictureBox2.Image = pictureBox1.Image;
+            }
+        }
+        Bitmap napis;
+        //string dir = @"C:\Users\daku\source\repos\testocr\testocr\bin\Debug\temp";
+        private void wykryj_linie()
+        {
+            napis = new Bitmap(pictureBox2.Image);
+            napis.Save("wyjscie.png");
+        }
+    }
+}
